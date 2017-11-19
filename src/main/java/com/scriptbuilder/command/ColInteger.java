@@ -26,7 +26,7 @@ public class ColInteger implements Command {
 			Integer i = new Integer(content);
 			Cell cell = row.getCell(i);
 			
-			if (cell != null && cell.getCellTypeEnum() == CellType.NUMERIC) {
+			if (cell != null && (cell.getCellTypeEnum() == CellType.NUMERIC || cell.getCellTypeEnum() == CellType.FORMULA)) {
 				Long value = (long)cell.getNumericCellValue();
 				log.log(Level.INFO, "Cell: " + value);
 				return "" + value;
@@ -39,6 +39,7 @@ public class ColInteger implements Command {
 		}
 		
 		return "";
+		
 	}
 	
 }

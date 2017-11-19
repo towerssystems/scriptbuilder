@@ -26,11 +26,11 @@ public class ColString implements Command {
 			Integer i = new Integer(content);
 			Cell cell = row.getCell(i);
 			
-			if (cell != null && cell.getCellTypeEnum() == CellType.STRING) {
+			if (cell != null && cell.getCellTypeEnum() == CellType.STRING || cell.getCellTypeEnum() == CellType.FORMULA) {
 				String value = cell.getStringCellValue();
 				log.log(Level.INFO, "Cell: " + value);
 				return value;
-			} else if (cell != null && cell.getCellTypeEnum() == CellType.NUMERIC) {
+			} else if (cell != null && (cell.getCellTypeEnum() == CellType.NUMERIC)) {
 				Long value = (long)cell.getNumericCellValue();
 				log.log(Level.INFO, "Cell: " + value);
 				return "" + value;
@@ -39,6 +39,7 @@ public class ColString implements Command {
 		}
 		
 		return "";
+		
 	}
 	
 }

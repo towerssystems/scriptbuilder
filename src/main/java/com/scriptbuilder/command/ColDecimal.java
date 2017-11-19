@@ -37,7 +37,7 @@ public class ColDecimal implements Command {
 			Integer i = new Integer(parameters[0]);
 			Cell cell = row.getCell(i);
 			
-			if (cell != null && cell.getCellTypeEnum() == CellType.NUMERIC) {
+			if (cell != null && (cell.getCellTypeEnum() == CellType.NUMERIC || cell.getCellTypeEnum() == CellType.FORMULA)) {
 				double value = cell.getNumericCellValue();
 				BigDecimal bd = new BigDecimal(value);
 				if (decimals != null) {
